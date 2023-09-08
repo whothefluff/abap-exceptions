@@ -8,8 +8,7 @@ class zcx_static_check definition
 
     interfaces: if_t100_message.
 
-    "! <p class="shorttext synchronized" lang="EN">Create an exception. Can use either a t100 msg or a text ID</p>
-    "! Providing <strong>both</strong> text parameters will result in a <strong>short dump</strong>
+    "! <p class="shorttext synchronized" lang="EN">Creates an exception. Can use a t100 msg</p>
     "!
     "! @parameter i_t100_message | <p class="shorttext synchronized" lang="EN">t100 message</p>
     "! @parameter i_previous | <p class="shorttext synchronized" lang="EN"></p>
@@ -27,14 +26,6 @@ class zcx_static_check definition
 
     data var4 type sy-msgv4 read-only.
 
-  protected section.
-
-    methods load_message_in_sy_structure
-              importing
-                i_t100_message type ref to if_t100_message
-              returning
-                value(r_self) type ref to zcx_static_check.
-
 endclass.
 class zcx_static_check implementation.
 
@@ -46,7 +37,7 @@ class zcx_static_check implementation.
 
     if i_t100_message is supplied.
 
-      me->load_message_in_sy_structure( i_t100_message ).
+      cl_message_helper=>set_msg_vars_for_if_t100_msg( i_t100_message ).
 
       me->var1 = sy-msgv1.
 
@@ -56,27 +47,18 @@ class zcx_static_check implementation.
 
       me->var4 = sy-msgv4.
 
-      me->if_t100_message~t100key = cond #( when i_t100_message is not initial
-                                            then value #( msgid = sy-msgid
-                                                          msgno = sy-msgno
-                                                          attr1 = 'VAR1'
-                                                          attr2 = 'VAR2'
-                                                          attr3 = 'VAR3'
-                                                          attr4 = 'VAR4' )
-                                            else if_t100_message=>default_textid ).
+      me->if_t100_message~t100key = value #( msgid = sy-msgid
+                                             msgno = sy-msgno
+                                             attr1 = 'VAR1'
+                                             attr2 = 'VAR2'
+                                             attr3 = 'VAR3'
+                                             attr4 = 'VAR4' ).
 
     else.
 
       me->if_t100_message~t100key = if_t100_message=>default_textid.
 
     endif.
-
-  endmethod.
-  method load_message_in_sy_structure.
-
-    cl_message_helper=>get_text_for_message( i_t100_message ).
-
-    r_self = me.
 
   endmethod.
 
