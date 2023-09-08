@@ -6,7 +6,7 @@ class zcx_no_check definition
 
   public section.
 
-    interfaces: if_t100_message.
+    interfaces: if_t100_dyn_msg.
 
     "! <p class="shorttext synchronized" lang="EN">Creates an exception. Can use a t100 msg</p>
     "!
@@ -17,14 +17,6 @@ class zcx_no_check definition
                 i_t100_message type ref to if_t100_message optional
                 i_previous like previous optional
                 preferred parameter i_t100_message.
-
-    data var1 type sy-msgv1 read-only.
-
-    data var2 type sy-msgv2 read-only.
-
-    data var3 type sy-msgv4 read-only.
-
-    data var4 type sy-msgv4 read-only.
 
 endclass.
 class zcx_no_check implementation.
@@ -37,22 +29,42 @@ class zcx_no_check implementation.
 
     if i_t100_message is supplied.
 
-      cl_message_helper=>set_msg_vars_for_if_t100_msg( i_t100_message ).
+      case type of i_t100_message.
 
-      me->var1 = sy-msgv1.
+        when type if_t100_dyn_msg into data(dyn).
 
-      me->var2 = sy-msgv2.
+          me->if_t100_dyn_msg~msgty = dyn->msgty.
 
-      me->var3 = sy-msgv3.
+          me->if_t100_dyn_msg~msgv1 = dyn->msgv1.
 
-      me->var4 = sy-msgv4.
+          me->if_t100_dyn_msg~msgv2 = dyn->msgv2.
 
-      me->if_t100_message~t100key = value #( msgid = sy-msgid
-                                             msgno = sy-msgno
-                                             attr1 = 'VAR1'
-                                             attr2 = 'VAR2'
-                                             attr3 = 'VAR3'
-                                             attr4 = 'VAR4' ).
+          me->if_t100_dyn_msg~msgv3 = dyn->msgv3.
+
+          me->if_t100_dyn_msg~msgv4 = dyn->msgv4.
+
+        when others.
+
+          cl_message_helper=>set_msg_vars_for_if_t100_msg( i_t100_message ).
+
+          me->if_t100_dyn_msg~msgv1 = sy-msgv1.
+
+          me->if_t100_dyn_msg~msgv2 = sy-msgv2.
+
+          me->if_t100_dyn_msg~msgv3 = sy-msgv3.
+
+          me->if_t100_dyn_msg~msgv4 = sy-msgv4.
+
+          me->if_t100_dyn_msg~msgty = 'E'.
+
+      endcase.
+
+      me->if_t100_message~t100key = value #( msgid = i_t100_message->t100key-msgid
+                                             msgno = i_t100_message->t100key-msgno
+                                             attr1 = 'IF_T100_DYN_MSG~MSGV1'
+                                             attr2 = 'IF_T100_DYN_MSG~MSGV2'
+                                             attr3 = 'IF_T100_DYN_MSG~MSGV3'
+                                             attr4 = 'IF_T100_DYN_MSG~MSGV4' ).
 
     else.
 
