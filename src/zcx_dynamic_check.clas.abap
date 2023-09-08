@@ -6,7 +6,7 @@ class zcx_dynamic_check definition
 
   public section.
 
-    interfaces: if_t100_dyn_msg.
+    interfaces: if_abap_behv_message.
 
     "! <p class="shorttext synchronized" lang="EN">Creates an exception. Can use a t100 msg</p>
     "!
@@ -65,6 +65,15 @@ class zcx_dynamic_check implementation.
                                              attr2 = 'IF_T100_DYN_MSG~MSGV2'
                                              attr3 = 'IF_T100_DYN_MSG~MSGV3'
                                              attr4 = 'IF_T100_DYN_MSG~MSGV4' ).
+
+      me->if_abap_behv_message~m_severity = cond #( when i_t100_message is instance of if_abap_behv_message
+                                                    then cast if_abap_behv_message( i_t100_message )->m_severity
+                                                    else switch #( sy-msgty
+                                                                   when 'E' then if_abap_behv_message=>severity-error
+                                                                   when 'I' then if_abap_behv_message=>severity-information
+                                                                   when 'W' then if_abap_behv_message=>severity-warning
+                                                                   when 'S' then if_abap_behv_message=>severity-success
+                                                                   else throw cx_sy_message_illegal_text( ) ) ).
 
     else.
 
