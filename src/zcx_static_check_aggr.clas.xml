@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCX_STATIC_CHECK_AGGR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Static check aggregate error</DESCRIPT>
+    <CATEGORY>40</CATEGORY>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_STATIC_CHECK_AGGR</CLSNAME>
+     <CMPNAME>IS_EMPTY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns true when the collection of errors is empty</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_STATIC_CHECK_AGGR</CLSNAME>
+     <CMPNAME>SIZE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the number of errors contained in this object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_STATIC_CHECK_AGGR</CLSNAME>
+     <CMPNAME>T_LIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Any errors</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_STATIC_CHECK_AGGR</CLSNAME>
+     <CMPNAME>UNTYPED_LIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns all errors typed as CX_ROOT</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_STATIC_CHECK_AGGR</CLSNAME>
+     <CMPNAME>ZCX_STATIC_CHECK_AGGR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Default message</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>I_LIST</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Mandatory collection of errors</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

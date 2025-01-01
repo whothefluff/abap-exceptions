@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCX_NO_CHECK</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Excs. with No Check of RAISING Clause with t100 message</DESCRIPT>
+    <CATEGORY>40</CATEGORY>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_NO_CHECK</CLSNAME>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Creates an exception. Can use a t100 msg</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_NO_CHECK</CLSNAME>
+     <CMPNAME>C_TEXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns this exception&apos;s text</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_NO_CHECK</CLSNAME>
+     <CMPNAME>MESSAGE_VARIABLES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns this exception&apos;s message variables</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_NO_CHECK</CLSNAME>
+     <CMPNAME>STACK_TRACE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the sequence of calls leading to this exception</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCX_NO_CHECK</CLSNAME>
+     <CMPNAME>TEXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns this exception&apos;s text</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>I_T100_MESSAGE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>t100 message</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>C_TEXT</CMPNAME>
+     <SCONAME>R_VAL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Exception text</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>STACK_TRACE</CMPNAME>
+     <SCONAME>R_VAL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Call stack</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>TEXT</CMPNAME>
+     <SCONAME>R_VAL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Exception text</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
